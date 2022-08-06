@@ -1,38 +1,29 @@
-const { DataTypes } = require('sequelize');
-const db = require('./index');
+const { Model, DataTypes } = require('sequelize');
 
-const Student = db.define('students', {
-  id: {
-    type: DataTypes.INTEGER,
-    autoIncrement: true,
-    allowNull: false,
-    primaryKey: true,
-    autoIncrement: true
-  },
-  name: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  email: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  ru: {
-    type: DataTypes.INTEGER,
-    allowNull: false
-  },
-  cpf: {
-    type: DataTypes.STRING(11),
-    allowNull: false
-  },
-  createdAt: {
-    allowNull: false,
-    type: DataTypes.DATE
-  },
-  updatedAt: {
-    allowNull: false,
-    type: DataTypes.DATE
+class Student extends Model {
+  static init(sequelize) {
+    super.init({
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      ru: {
+        type: DataTypes.STRING(5),
+        allowNull: false,
+      },
+      cpf: {
+        type: DataTypes.STRING(11),
+        allowNull: false,
+      }
+    }, {
+      sequelize,
+      modelName: 'student',
+    })
   }
-});
+}
 
 module.exports = Student;

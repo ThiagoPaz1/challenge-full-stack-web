@@ -18,7 +18,7 @@ module.exports = {
         allowNull: false
       },
       ru: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING(5),
         allowNull: false
       },
       cpf: {
