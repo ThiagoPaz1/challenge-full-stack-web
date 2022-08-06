@@ -18,9 +18,16 @@ const update = async (id, body) => {
   return await Student.update(body, {where: { id: id }});
 }
 
+const remove = async (id) => {
+  return await Student.destroy({
+    where: { id: id }
+  });
+}
+
 module.exports = {
   create,
   findOne,
   findAll,
   update,
+  remove,
 }

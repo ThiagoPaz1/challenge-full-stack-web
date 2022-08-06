@@ -4,6 +4,7 @@ const {
   registrationStudent,
   getStudent,
   editStudent,
+  deleteStudent
 } = require('../controllers/student/index');
 
 router.get('/:id', getStudent.findStudent);
@@ -15,5 +16,7 @@ router.post('/new',
 );
 
 router.put('/edit/:id', editStudent.edit);
+
+router.delete('/delete/:id', deleteStudent.remove);
 
 module.exports = router;
