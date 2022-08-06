@@ -9,7 +9,6 @@ const listAllStudents = async (_req, res) => {
     ru: i.ru,
     cpf: i.cpf
   }));
-  
 
   try {
     return res.status(200).json(listStudents);
@@ -23,7 +22,7 @@ const findStudent = async (req, res) => {
   const search = await studentService.findOne({where: {id: id}}) 
 
   if (!search) {
-    return res.status(404).send('Aluno não encontrado');
+    return res.status(401).send('Id não encontrado');
   }
   
   try {
