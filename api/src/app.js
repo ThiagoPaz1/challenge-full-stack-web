@@ -4,6 +4,8 @@ var cors = require('cors')
 const app = express();
 const studentRouter = require('./routers/index');
 
+require('./database');
+
 dotenv.config();
 
 app.use(cors())
