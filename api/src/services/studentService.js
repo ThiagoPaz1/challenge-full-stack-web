@@ -14,6 +14,10 @@ const findAll = async () => {
   return await Student.findAll();
 }
 
+const update = async (id, body) => {
+  return await Student.update({ body }, {where: {id: id}});
+}
+
 module.exports = {
   create,
   findOne,

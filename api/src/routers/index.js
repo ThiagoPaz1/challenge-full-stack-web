@@ -10,4 +10,6 @@ router.post('/new',
   registrationStudent.newStudent
 );
 
+router.put('/edit/:id')
+
 module.exports = router;
