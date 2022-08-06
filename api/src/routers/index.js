@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const { registrationStudent } = require('../controllers/student/index');
+const { registrationStudent, getStudent } = require('../controllers/student/index');
 
-router.get('/', )
+router.get('/', getStudent.listAllStudents);
 
 router.post('/new',
   registrationStudent.validFields,
