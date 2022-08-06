@@ -9,7 +9,6 @@ const listAllStudents = async (_req, res) => {
     ru: i.ru,
     cpf: i.cpf
   }));
-  
 
   try {
     return res.status(200).json(listStudents);
