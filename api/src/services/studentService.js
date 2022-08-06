@@ -10,7 +10,12 @@ const findOne = async (search) => {
  return await Student.findOne(search)
 }
 
+const findAll = async () => {
+  return await Student.findAll();
+}
+
 module.exports = {
   create,
   findOne,
+  findAll,
 }
