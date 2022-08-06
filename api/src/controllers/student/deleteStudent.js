@@ -6,7 +6,7 @@ const remove = async (req, res) => {
   try {
     const checkId= await studentService.remove(id);
     
-    if (!checkId) return res.status(401).send('Id não encontrado');
+    if (!checkId) return res.status(400).send('Id não encontrado');
 
     return res.status(200).send('Cadastro removido');
   } catch (error) {

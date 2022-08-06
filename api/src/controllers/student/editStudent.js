@@ -16,7 +16,7 @@ const edit = async (req, res) => {
   try {
     const checkId = await studentService.update(id, { name, email });
 
-    if (!checkId[0]) return res.status(401).send('Id não encontrado');
+    if (!checkId[0]) return res.status(400).send('Id não encontrado');
     
     return res.status(200).send('Cadastro atualizado com sucesso');
   } catch (error) {

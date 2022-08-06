@@ -22,7 +22,7 @@ const findStudent = async (req, res) => {
   const search = await studentService.findOne({where: {id: id}}) 
 
   if (!search) {
-    return res.status(401).send('Id não encontrado');
+    return res.status(400).send('Id não encontrado');
   }
   
   try {
