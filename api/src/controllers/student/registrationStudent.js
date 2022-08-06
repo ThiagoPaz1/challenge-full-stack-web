@@ -1,10 +1,11 @@
-const studentService = require('../services/studentService');
+const studentService = require('../../services/studentService');
 
-const newStudent = async (req, res) => {
+const validFields = async (req, res, next) => {
   const { name, email, cpf } = req.body;
   const fields = [ name, email, cpf ];
-  const teste = await studentService.findOne({where: {cpf: cpf}})
-  console.log(teste)
+  const checkEmail = await studentService.findOne({where: {email: email}});
+  const checkCpf = await studentService.findOne({where: {cpf: cpf}});
+
   for (let i in fields) {
     if (!fields[i].length) {
       return res.status(400).send('Todos os campos devem ser preenchidos');
@@ -12,6 +13,16 @@ const newStudent = async (req, res) => {
   }
 
   if (cpf.length < 11) return res.status(400).send('CPF deve conter 11 digitos.');
+
+  if (checkEmail || checkCpf) {
+    return res.status(400).send('Esse email ou CPF, já se encontra cadastrado');
+  }
+
+  next();
+}
+
+const newStudent = async (req, res) => {
+  const { name, email, cpf } = req.body;
 
   try {
     await studentService.create({name, email, cpf});
@@ -23,5 +34,6 @@ const newStudent = async (req, res) => {
 }
 
 module.exports = {
-  newStudent,
+  validFields,
+  newStudent
 }
