@@ -18,6 +18,25 @@ const listAllStudents = async (_req, res) => {
   }
 }
 
+const findStudent = async (req, res) => {
+  const { id } = req.params;
+  const search = await studentService.findOne({where: {id: id}}) 
+
+  if (!search) {
+    return res.status(404).send('Aluno não encontrado');
+  }
+  
+  try {
+    const { id, name, email, ru, cpf } = search.dataValues;
+    const searchResult = { id, name, email, ru, cpf };
+
+    res.status(200).json(searchResult);
+  } catch (error) {
+    res.status(400).json(error);
+  }
+}
+
 module.exports = {
   listAllStudents,
+  findStudent,
 }
