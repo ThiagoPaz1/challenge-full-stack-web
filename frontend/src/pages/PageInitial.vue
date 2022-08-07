@@ -6,10 +6,11 @@
 
 <script>
   import NavigationBar from '@/components/NavigationBar.vue'
+  
   export default {
+    name: "PageInitial",
     components: { 
       NavigationBar 
     },
-    name: "PageInitial",
-}
+  }
 </script>

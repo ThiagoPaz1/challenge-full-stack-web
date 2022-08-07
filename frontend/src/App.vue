@@ -1,12 +1,9 @@
 <template>
-  <PageInital />
+  <router-view/>
 </template>
 
 <script>
-  import PageInital from './pages/PageInital.vue'
   export default {
-    components: {
-      PageInital,
-    },    
+    name: 'App',
   }
 </script>
