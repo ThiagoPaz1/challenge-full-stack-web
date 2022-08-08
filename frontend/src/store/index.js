@@ -9,7 +9,7 @@ export default new Vuex.Store({
     students: [],
   },
   mutations: {
-    addAllStudent(state, newValue) {
+    addStudent(state, newValue) {
       state.students = newValue;
     }
   },
@@ -17,7 +17,7 @@ export default new Vuex.Store({
     async getAllStudents({ commit }) {
       const dataApi = await getAllStudentsApi(); 
 
-      commit('addAllStudent', dataApi);
+      commit('addStudent', dataApi);
     }
   }
 });
