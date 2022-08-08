@@ -5,12 +5,12 @@
 </template>
 
 <script>
-  import NavigationBar from '@/components/NavigationBar.vue'
-  
+  import NavigationBar from '@/components/NavigationBar.vue';
+
   export default {
     name: "PageInitial",
-    components: { 
-      NavigationBar 
+    components: {
+      NavigationBar,
     },
   }
 </script>
