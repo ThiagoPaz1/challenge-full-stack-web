@@ -6,3 +6,7 @@ export const getAllStudentsApi = async () => {
 
   return data;
 }
+
+export const deleteStudentApi = async (id) => {
+  return await axios.delete(`http://localhost:3001/student/delete/${id}`);
+}

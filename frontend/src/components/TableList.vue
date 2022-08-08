@@ -18,7 +18,7 @@
           <td>{{ formatCpf(item.cpf) }}</td>
           <td>
             <v-icon small class="mr-2">mdi-pencil</v-icon>
-            <v-icon small @click="deleteStudent(item)">mdi-delete</v-icon>
+            <v-icon small @click="deleteStudent(item.id)">mdi-delete</v-icon>
           </td>
         </tr>
       </tbody>
@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import { deleteStudentApi } from '@/services';
 export default {
   name: "TableList",
   data() {
@@ -42,8 +43,12 @@ export default {
   },
 
   methods: {
-    formatCpf(cpf){
+    formatCpf(cpf) {
       return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+    },
+    async deleteStudent(id) {
+      await deleteStudentApi(id);
+      this.$store.dispatch('getAllStudents');
     }
   },
 
