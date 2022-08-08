@@ -9,17 +9,15 @@ export default new Vuex.Store({
     students: [],
   },
   mutations: {
-    addStudent(state, newValue) {
-      state.students.push(newValue);
-    },
+    addAllStudent(state, newValue) {
+      state.students = newValue;
+    }
   },
   actions: {
     async getAllStudents({ commit }) {
       const dataApi = await getAllStudentsApi(); 
 
-      for (let i in dataApi) {
-        commit('addStudent', dataApi[i]);
-      }
+      commit('addAllStudent', dataApi);
     }
   }
 });

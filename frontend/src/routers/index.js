@@ -1,15 +1,15 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import PageInitial from '../pages/PageInitial';
+import PageStudent from '../pages/student/PageStudent'
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
-    name: 'pageInitial',
-    component: PageInitial,
-  },
+    path: '/students',
+    name: 'pageStudent',
+    component: PageStudent,
+  }
 ];
 
 const router = new VueRouter({
