@@ -1,9 +1,9 @@
 const Student = require('../models/student');
 
 const create = async (body) => {
-  const { name, email, cpf  } = body;
+  const { name, email, ru, cpf  } = body;
 
-  return await Student.create({name, email, ru: '15345', cpf});
+  return await Student.create({name, email, ru, cpf});
 }
 
 const findOne = async (search) => {
