@@ -7,11 +7,12 @@ export const getAllStudentsApi = async () => {
   return data;
 }
 
-export const getStudentByIdApi = async (id) => {
-  const request = await axios.get(`http://localhost:3001/student/${id}`);
-  const { data } = request;
-
-  return data;
+export const newStudentdApi = async (body) => {
+  return await axios({
+    method: "post",
+    url: 'http://localhost:3001/student/new',
+    data: body,
+  }); 
 }
 
 export const deleteStudentApi = async (id) => {

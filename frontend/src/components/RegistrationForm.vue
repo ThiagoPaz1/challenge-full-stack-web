@@ -6,7 +6,6 @@
   >
     <v-text-field
       v-model="name"
-      :counter="10"
       :rules="nameRules"
       label="Name"
       required
@@ -31,46 +30,63 @@
       :disabled="!valid"
       color="success"
       class="mr-4"
-      @click="validate"
+      @click="save"
     >
       Salvar
     </v-btn>
-
-    <v-btn
-      color="error"
-      class="mr-4"
-    >
-      Cancelar
-    </v-btn>
+    <router-link to="/students">
+      <v-btn
+        color="primary"
+        class="mr-4"
+      >
+        Voltar
+      </v-btn>
+    </router-link>  
   </v-form>
 </template>
 
 <script>
+  import { newStudentdApi } from '@/services/index';
+
   export default {
     name: 'RegistrationForm',
     data: () => ({
       valid: true,
       name: '',
       nameRules: [
-        v => !!v || 'Nome é obrigatório',
-        v => v.length == 3 || 'Nome precisa ter no mínimo 3 caracteres',
+        v => v.length >= 3 || 'Nome precisa ter no mínimo 3 caracteres',
       ],
       email: '',
       emailRules: [
-        v => !!v || 'E-mail é obrigatório',
         v => /.+@.+\..+/.test(v) || 'Insira um e-mail valido',
       ],
       cpf: '',
       cpfRules: [
-        v => !!v || 'CPF é obrigatório',
         v => v.length == 11 || 'CPF precisa ter 11 digitos',  
       ],
     }),
 
     methods: {
-      validate() {
-        this.$refs.form.validate()
-      },
+      async save() {
+        const {name, email, cpf} = this
+        const newStudent = { 
+          name: name,
+          email: email,
+          cpf: cpf  
+        }
+        
+        try {
+          await newStudentdApi(newStudent); 
+          
+          alert('Novo estudante salvo com sucesso');
+          
+          this.name = '';
+          this.email = '';
+          this.cpf = '';
+        } catch (error) {
+          alert(error.response.data);
+        }
+      }
     },
   }
 </script>
