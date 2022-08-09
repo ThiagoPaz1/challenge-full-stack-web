@@ -9,3 +9,17 @@
 
 ## 3 - Agora entre na pasta /frontend, e digite npm instal, para instalar as depedências.
 ### 3.1 - Feito a instalção das depedências nas pasta /frontend, digite o comando ainda dentra da pasta /frontend npm start, para ligar a aplicação, e a mesma já estara pronta para uso.
+
+
+# Resposta as seguintes perguntas:
+## Decisão da arquitetura utilizada ?
+  ### A arquitetura escolhida foi o MVC, porém só foi aplicado os conceitos de models, e controllers, sendo a camada de view o proprio app(frontend), que esta consumindo a api.
+
+## Lista de bibliotecas de terceiros utilizadas ?
+  ### Api => cors, dotenv, mysql2(drive), sequelize(ORM), express(Framework). Frontend => axios, core-js, vue(Framework), vue-router, vuetify, vuex
+
+## O que você melhoraria se tivesse mais tempo ?
+  ### Faria mais duas rotas na api, para cadastrar novo usuario admin, e para fazer login na aplicação, e com isso gerando um token para proteger as rotas, e com isso so que estivesse cadastrado e logado na aplicação poderia acessá-la, e fazer as repequitivas telas no frontend, para consumir esses endpoints, da api.
+
+## Quais requisitos obrigatórios que não foram entregues ?
+  ### Modais de confirmação, para deletar cadastro de estudante, não deu tempo.
