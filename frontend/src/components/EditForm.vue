@@ -28,10 +28,10 @@
     </v-btn>
     <router-link to="/students">
       <v-btn
-        color="primary"
+        color="error"
         class="mr-4"
       >
-        Voltar
+        Cancelar
       </v-btn>
     </router-link>  
   </v-form>
