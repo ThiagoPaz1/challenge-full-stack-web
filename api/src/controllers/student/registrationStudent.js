@@ -28,9 +28,12 @@ const validFields = async (req, res, next) => {
 
 const newStudent = async (req, res) => {
   const { name, email, cpf } = req.body;
-
+  const findRuBase = await studentService.findAll();
+  const ruBase = findRuBase.map(i => i.dataValues);
+  const ru = ruBase[ruBase.length-1].ru +1;
+  
   try {
-    await studentService.create({name, email, cpf});
+    await studentService.create({name, email, ru, cpf});
 
     return res.status(201).send('Criado com sucesso!');
   } catch (error) {

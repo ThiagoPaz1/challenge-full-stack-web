@@ -2,7 +2,9 @@
   <div>
     <section>
       <SearchBar class="content-searchBar" />
-      <button>Cadastrar Aluno</button>
+      <router-link to="/registrationStudents">
+        <button>Cadastrar Aluno</button>
+      </router-link>
     </section>
     <TableList />
   </div>
@@ -30,12 +32,17 @@
     justify-content: center;
   }
 
-  button {
+  a {
     align-self: center;
+    margin-left: 30px;
+    width: 25vmin;
+    height: 7.5vmin;
+  }
+
+  button {
     width: 25vmin;
     height: 7.5vmin;
     padding: 8.2px;
-    margin-left: 30px;
     font-weight: bold;
     color: white;
     background-color: #0B610B;

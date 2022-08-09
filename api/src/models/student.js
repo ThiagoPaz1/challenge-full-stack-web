@@ -12,7 +12,8 @@ class Student extends Model {
         allowNull: false,
       },
       ru: {
-        type: DataTypes.STRING(5),
+        type: DataTypes.INTEGER,
+        defaultValue: 10000,
         allowNull: false,
       },
       cpf: {
