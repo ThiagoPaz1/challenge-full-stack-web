@@ -33,7 +33,18 @@ export default {
     return {
       drawer: false,
       selectedItem: 1,
-      items: [{ text: "Alunos", icon: "mdi-account", router: "/students" }],
+      items: [
+        { 
+          text: "Inicio",
+          icon: "mdi-home",
+          router: "/"
+        },
+        { 
+          text: "Alunos",
+          icon: "mdi-account",
+          router: "/students"
+        },
+      ],
     };
   },
 };
