@@ -31,8 +31,15 @@ const validFields = async (req, res, next) => {
 const newStudent = async (req, res) => {
   const { name, email, cpf } = req.body;
   const findRuBase = await studentService.findAll();
-  const ruBase = findRuBase.map(i => i.dataValues);
-  const ru = ruBase[ruBase.length-1].ru +1;
+  let ru = 0;
+
+  if (!findRuBase.length) {
+    ru = 1000;
+  } else {
+    let ruBase = findRuBase.map(i => i.dataValues);
+
+    ru = ruBase[ruBase.length-1].ru +1;
+  }
 
   try {
     await studentService.create({name, email, ru, cpf});
