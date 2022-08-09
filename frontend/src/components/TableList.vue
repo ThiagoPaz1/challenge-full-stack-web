@@ -17,7 +17,9 @@
           <td>{{ item.email }}</td>
           <td>{{ formatCpf(item.cpf) }}</td>
           <td>
-            <v-icon small class="mr-2">mdi-pencil</v-icon>
+            <router-link :to="{ name: 'pageEditStudent', params: { item } }">
+              <v-icon small class="mr-2">mdi-pencil</v-icon>
+            </router-link>
             <v-icon small @click="deleteStudent(item.id)">mdi-delete</v-icon>
           </td>
         </tr>
@@ -60,3 +62,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  a {
+    text-decoration: none;
+  }
+</style>

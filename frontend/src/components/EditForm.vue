@@ -18,14 +18,6 @@
       required
     ></v-text-field>
 
-  <v-text-field
-      placeholder="Digite sem os ' . ' e ' - ', ex: 00011122233"
-      v-model="cpf"
-      :rules="cpfRules"
-      label="CPF"
-      required
-    ></v-text-field>
-
     <v-btn
       :disabled="!valid"
       color="success"
@@ -46,48 +38,47 @@
 </template>
 
 <script>
-  import { newStudentdApi } from '@/services/index';
+  import { editStudentdApi } from '@/services/index';
 
   export default {
     name: 'RegistrationForm',
-    data: () => ({
+    data() {
+     const { item } = this.$route.params;
+     return {
       valid: true,
-      name: '',
+      name: item.name,
       nameRules: [
         v => v.length >= 3 || 'Nome precisa ter no mínimo 3 caracteres',
       ],
-      email: '',
+      email: item.email,
       emailRules: [
         v => /.+@.+\..+/.test(v) || 'Insira um e-mail valido',
       ],
-      cpf: '',
-      cpfRules: [
-        v => v.length == 11 || 'CPF precisa ter 11 digitos',  
-      ],
-    }),
+    }
+  },
 
     methods: {
       async save() {
-        const {name, email, cpf} = this
+        const {id} = this.$route.params.item;
+        const { name, email } = this;
+
         const newStudent = { 
           name: name,
           email: email,
-          cpf: cpf  
         }
         
         try {
-          await newStudentdApi(newStudent); 
+          await editStudentdApi(id, newStudent); 
           
-          alert('Novo aluno salvo com sucesso');
+          alert('Informações editadas com sucesso');
           
           this.name = '';
           this.email = '';
-          this.cpf = '';
         } catch (error) {
           alert(error.response.data);
         }
       }
-    },
+    }
   }
 </script>
 
